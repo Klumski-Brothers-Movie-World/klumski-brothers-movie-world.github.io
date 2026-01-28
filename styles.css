@@ -332,6 +332,16 @@ body {
     box-shadow: 0 5px 20px rgba(229, 9, 20, 0.4);
 }
 
+.form-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    min-height: 20px;
+    transition: all 0.3s ease;
+}
+
 /* Footer */
 .footer {
     background: rgba(10, 10, 10, 0.95);

@@ -91,11 +91,15 @@
             <div class="contact-content">
                 <p>Hast du Fragen? Willst du uns deine Filmideen andrehen? Oder einfach nur sagen, dass du's besser kannst? Her damit! 📧</p>
                 <p class="warning-text">⚠️ Achtung: Wir antworten mit 73% Wahrscheinlichkeit mit Memes</p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Dein Name" required>
-                    <input type="email" placeholder="Deine E-Mail" required>
-                    <textarea placeholder="Deine Nachricht" rows="5" required></textarea>
+                <form class="contact-form" id="contactForm">
+                    <input type="hidden" name="access_key" value="7563784b-9300-45d8-965e-791b79bf592f">
+                    <input type="hidden" name="subject" value="Neue Nachricht von Klumski Brothers Website">
+                    <input type="hidden" name="from_name" value="Klumski Brothers Kontaktformular">
+                    <input type="text" name="name" placeholder="Dein Name" required>
+                    <input type="email" name="email" placeholder="Deine E-Mail" required>
+                    <textarea name="message" placeholder="Deine Nachricht" rows="5" required></textarea>
                     <button type="submit" class="submit-button">Nachricht senden</button>
+                    <p id="formResult" class="form-result"></p>
                 </form>
             </div>
         </div>
@@ -108,5 +112,40 @@
             <p class="disclaimer">⚠️ Keine echte Filmfirma. Keine echten Filme. Nur echte Brüder mit echtem Humor! 🎭</p>
         </div>
     </footer>
+
+    <script>
+        // Contact Form Handler
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('formResult');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            result.textContent = 'Nachricht wird gesendet...';
+            result.style.color = '#ffd700';
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    result.textContent = '✅ Nachricht erfolgreich gesendet! Wir melden uns (vielleicht mit einem Meme 😄)';
+                    result.style.color = '#4CAF50';
+                    form.reset();
+                } else {
+                    result.textContent = '❌ Oops! Da ist was schiefgelaufen. Versuch es nochmal!';
+                    result.style.color = '#ff6b6b';
+                }
+            } catch (error) {
+                result.textContent = '❌ Fehler beim Senden. Bist du online? 🤔';
+                result.style.color = '#ff6b6b';
+            }
+        });
+    </script>
 </body>
 </html>
