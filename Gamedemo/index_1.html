@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. X - Loading...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        #loading {
+            text-align: center;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin: 5px 0;
+        }
+
+        #error {
+            display: none;
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff6b6b;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            max-width: 600px;
+        }
+
+        #error h2 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <div class="spinner"></div>
+        <h1>🎮 Mr. X wird geladen...</h1>
+        <p id="status">Pyodide wird initialisiert...</p>
+        <p style="font-size: 12px; margin-top: 15px; opacity: 0.7;">Dies kann 20-30 Sekunden dauern</p>
+        
+        <div id="error">
+            <h2>❌ Fehler beim Laden</h2>
+            <p id="error-message"></p>
+            <pre id="error-details"></pre>
+        </div>
+    </div>
+
+    <!-- Pyodide laden -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    
+    <script type="text/javascript">
+        async function main() {
+            try {
+                // Status update
+                document.getElementById('status').textContent = 'Pyodide wird geladen...';
+                
+                // Pyodide laden
+                const pyodide = await loadPyodide();
+                console.log("✅ Pyodide geladen");
+                
+                // Status update
+                document.getElementById('status').textContent = 'Python-Datei wird geladen...';
+                
+                // Hole irgendwas.py vom Server
+                const response = await fetch('irgendwas.py');
+                if (!response.ok) {
+                    throw new Error(`Konnte irgendwas.py nicht laden: ${response.status} ${response.statusText}`);
+                }
+                const pythonCode = await response.text();
+                console.log("✅ irgendwas.py geladen");
+                
+                // Status update
+                document.getElementById('status').textContent = 'Spiel wird gestartet...';
+                
+                // Führe Python-Code aus
+                await pyodide.runPythonAsync(pythonCode);
+                console.log("✅ irgendwas.py ausgeführt");
+                
+                // Loading verstecken (falls Python das nicht macht)
+                document.getElementById('loading').style.display = 'none';
+                
+            } catch (error) {
+                console.error("❌ Fehler:", error);
+                
+                // Zeige Fehler
+                document.querySelector('.spinner').style.display = 'none';
+                document.getElementById('status').style.display = 'none';
+                
+                const errorDiv = document.getElementById('error');
+                errorDiv.style.display = 'block';
+                
+                document.getElementById('error-message').textContent = error.message;
+                document.getElementById('error-details').textContent = error.stack || 'Keine weiteren Details verfügbar';
+            }
+        }
+
+        // Starte wenn Seite geladen ist
+        main();
+    </script>
+</body>
+</html>
