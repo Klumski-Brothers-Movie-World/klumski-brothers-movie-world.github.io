@@ -12,6 +12,43 @@
     --overlay-color: rgba(0, 0, 0, 0.75);
 }
 
+/* Scroll Logo */
+.scroll-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 500;
+    pointer-events: none;
+    opacity: 1;
+    text-align: center;
+}
+
+.scroll-logo-text {
+    margin: 0;
+    padding: 0;
+}
+
+.scroll-logo-text p {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin: 0 0 1rem 0;
+    letter-spacing: 2px;
+}
+
+.scroll-logo-text h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 20px rgba(229, 9, 20, 0.6);
+    margin: 0;
+}
+
+
+
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--secondary-color);
@@ -103,7 +140,17 @@ body {
     justify-content: center;
     text-align: center;
     padding: 2rem;
-    margin-top: 80px;
+}
+
+/* Intro Hero - nur für intro.html */
+.intro-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    transition: opacity 0.3s ease;
 }
 
 .hero-content {
@@ -272,6 +319,26 @@ body {
     background: rgba(20, 20, 20, 0.8);
 }
 
+/* Filler Section */
+.filler-section {
+    background: rgba(20, 20, 20, 0.9);
+    padding: 10rem 2rem;
+    text-align: center;
+    min-height: 500vh;
+    margin-top: 100vh;
+}
+
+.filler-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.filler-section p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
 .contact-content {
     max-width: 600px;
     margin: 0 auto;
@@ -375,6 +442,81 @@ body {
     font-style: italic;
     animation: blink 2s infinite;
 }
+
+.audio-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    border: color-mix(in rgb, rgba(229, 9, 20 ,0.4) 50, rgba(229, 9, 20, 0.1) 50);
+    border-radius: 15px;
+    padding: 2rem;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+    transition: all 0.3s ease;
+    z-index: 900;
+    max-width: 400px;
+}
+
+.audio-button:hover {
+    background: #f40612;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.6);
+}
+
+.audio-button p {
+    color: var(--text-light);
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.audio-button img {
+    width: 40px;
+    height: 40px;
+}
+
+.audio-pdf {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background: var(--primary-color);
+    border: color-mix(in rgb, rgba(229, 9, 20 ,0.4) 50, rgba(229, 9, 20, 0.1) 50);
+    border-radius: 15px;
+    padding: 2rem;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+    transition: all 0.3s ease;
+    z-index: 900;
+    max-width: 400px;
+}
+
+.audio-pdf:hover {
+    background: #f40612;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.6);
+}
+
+.audio-pdf p {
+    color: var(--text-light);
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.audio-pdf img {
+    width: 40px;
+    height: 40px;
+}
+
+
+
 
 @keyframes blink {
     0%, 50%, 100% { opacity: 1; }

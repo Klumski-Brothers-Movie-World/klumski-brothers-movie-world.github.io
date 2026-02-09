@@ -6,7 +6,8 @@
     <title>Klumski Brothers Movie World for the Leinwand</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-    <header id="home" class="hero">
+<body>
+    <header id="home" class="hero intro-hero">
         <div class="hero-content">
             <h1 class="hero-title">Willkommen in der legendären</h1>
             <h2 class="hero-subtitle">Klumski Brothers Movie World</h2>
@@ -14,3 +15,70 @@
             <p class="hero-joke">(Spoiler: Wir sind zwei Brüder mit 'nem Laptop und großen Träumen)</p>
         </div>
     </header>
+
+    <!-- Filler Content für Scrolling -->
+    <section class="filler-section">
+        <div class="container">
+            <h2>Mehr Inhalte kommen bald...</h2>
+            <p>Das ist eine Platzhaltersection für das Auto-Scrolling-Erlebnis</p>
+        </div>
+    </section>
+
+    <script>
+        let scrolling = true;
+        const scrollSpeed = 0.37;
+        const introHero = document.querySelector('.intro-hero');
+        let scrollPos = 0;
+        
+        function autoScroll() {
+            if (!scrolling) return;
+            
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const percentage = scrollPos / maxScroll;
+            
+            // Opacity
+            if (percentage > 0.8) {
+                introHero.style.opacity = Math.max(0, 1 - (percentage - 0.8) / 0.2);
+            } else {
+                introHero.style.opacity = 1;
+            }
+            
+            // Dynamische Geschwindigkeit
+            let speed = scrollSpeed;
+            if (percentage < 0.1) speed = scrollSpeed * 1.3;
+            else if (percentage > 0.4 && percentage < 0.7) speed = scrollSpeed * 1.15;
+            else if (percentage > 0.8) speed = scrollSpeed * 0.7;
+            
+            scrollPos += speed;
+            window.scrollTo(0, scrollPos);
+            
+            // Check ob Ende erreicht
+            if (scrollPos >= maxScroll) {
+                scrolling = false;
+                setTimeout(() => {
+                    scrolling = true;
+                    scrollPos = 0;
+                    window.scrollTo(0, 0);
+                    autoScroll();
+                }, 3000);
+            } else {
+                requestAnimationFrame(autoScroll);
+            }
+        }
+        
+        // Starten wenn Seite geladen ist
+        window.addEventListener('load', () => {
+            autoScroll();
+        });
+        
+        // Stoppen bei Nutzer-Interaktion
+        document.addEventListener('wheel', (e) => {
+            scrolling = false;
+            scrollPos = window.scrollY || document.documentElement.scrollTop;
+        }, true);
+        
+        document.addEventListener('touchmove', () => {
+            scrolling = false;
+        }, true);
+    </script>
+</body>
