@@ -1,7 +1,8 @@
 javascript.document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('myForm');
+    const form = document.getElementById('contact-form');
     form.addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent the default form submission
+        console.log('Form submitted!'); // Log a message to the console
     });
 });
         let scrolling = true;
