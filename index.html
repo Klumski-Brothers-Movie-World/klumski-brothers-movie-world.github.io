@@ -493,16 +493,24 @@
 
         // Easter Egg: Konami Code
         let konamiCode = [];
-        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'Enter'];
         
         document.addEventListener('keydown', (e) => {
             konamiCode.push(e.key);
             konamiCode = konamiCode.slice(-10);
             
+            // Debug: zeigt jeden Tastendruck in der Konsole
+            console.log('🕹️ Taste gedrückt:', e.key);
+            console.log('📋 Bisherige Sequenz:', konamiCode.join(', '));
+            console.log('🎯 Noch fehlend:', konamiSequence.slice(konamiCode.length).join(', '));
+            
             if (konamiCode.join(',') === konamiSequence.join(',')) {
+                console.log('🎊 KONAMI CODE AKTIVIERT!');
                 alert('🎊 GEHEIMER KARNEVAL-MODUS AKTIVIERT! 🎊\n\nDu hast das Easter Egg gefunden!\n\n🎭 Helau! 🎪');
                 document.body.style.animation = 'rainbow 2s infinite';
+                document.body.style.filter = 'hue-rotate(0deg)';
                 createConfetti();
+                konamiCode = []; // Reset nach Erfolg
             }
         });
     </script>
