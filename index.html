@@ -21,6 +21,9 @@
                 <li><a href="#movies">🎥 "Filme"</a></li>
                 <li><a href="#awards">🏆 Auszeichnungen</a></li>
                 <li><a href="#contact">📧 Kontakt</a></li>
+                <li><a href="https://github.com/Klumski-Brothers-Movie-World" target="_blank">💻 GitHub</a></li>
+                <li><a href="https://bit.ly/pls_spenden" target="_blank">💰 Spenden</a></li>
+                <li><img src="https://genqrcode.com/embedded?style=0&inner_eye_style=2&outer_eye_style=2&logo=f3d3e434828f5008572c44e999223d5a&color=%2300000000&background_color=%23FFFFFFFF&inner_eye_color=%23000000&outer_eye_color=%23000000&imageformat=svg&language=en&frame_style=10&frame_text=SCAN%20ME&frame_text_icon_color=%23000000&frame_text_icon=null&frame_color=%23000000&frame_background_color=%23FFFFFF&frame_text_color=%23FFFFFF&invert_colors=true&gradient_style=1&gradient_color_start=%230014ad&gradient_color_end=%2300aaff&gradient_start_offset=5&gradient_end_offset=95&stl_type=1&logo_remove_background=true&stl_size=100&stl_qr_height=1.5&stl_base_height=2&stl_include_stands=false&stl_qr_magnet_type=3&stl_qr_magnet_count=0&type=0&text=klumski-brothers-movie-world.github.io&width=200&height=200&bordersize=2" alt="qr code" /></li>
             </ul>
         </div>
     </nav>
@@ -420,6 +423,31 @@
     </footer>
 
     <script>
+        // Wrap Emojis in spans für besseres Styling
+        function wrapEmojis() {
+            const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g;
+            
+            function processNode(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.textContent;
+                    if (emojiRegex.test(text)) {
+                        const span = document.createElement('span');
+                        span.innerHTML = text.replace(emojiRegex, '<span class="emoji">$1</span>');
+                        node.parentNode.replaceChild(span, node);
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE && node.nodeName !== 'SCRIPT') {
+                    for (let child of node.childNodes) {
+                        processNode(child);
+                    }
+                }
+            }
+            
+            processNode(document.body);
+        }
+        
+        // Emojis beim Laden wrappen
+        document.addEventListener('DOMContentLoaded', wrapEmojis);
+
         // Contact Form Handler
         const form = document.getElementById('contactForm');
         const result = document.getElementById('formResult');
@@ -479,7 +507,7 @@
             const colors = ['#e50914', '#ffd700', '#4CAF50', '#2196F3', '#FF69B4', '#FFA500'];
             const confettiContainer = document.getElementById('confetti');
             
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti-piece';
                 confetti.style.left = Math.random() * 100 + '%';
@@ -487,7 +515,6 @@
                 confetti.style.animationDelay = Math.random() * 3 + 's';
                 confettiContainer.appendChild(confetti);
                 
-                setTimeout(() => confetti.remove(), 5000);
             }
         }
 
