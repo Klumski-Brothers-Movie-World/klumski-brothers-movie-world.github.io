@@ -111,24 +111,25 @@
                 // Lade micropip
                 await pyodide.loadPackage("micropip");
                 const micropip = pyodide.pyimport("micropip");
-                await micropip.install("tkweb");
-                if (error) {
-                 // fallback if lowercase not found
-                 await micropip.install("TkWeb");
-                 if (error) {
-                  // fallback for the fallback if PyPi dosen't want to serve the package
-                  await micropip.install("klumski-brothers-movie-world.github.io/Gamedemo/whl/tkweb/tkweb-0.0.2-py3-none-any.whl")
-                  if (error) {
-                   // if that fails
-                   sys.modules['tkweb'] = pyodide.pyimport('tkweb');
-                   if (error) {
-                    // if That TOO fails
-                    sys.modules['TkWeb'] = print("tkweb module not found, continuing without it...");
-                    console.log("Error during tkweb installation, continuing without it...");
-                   }
-                  }
-                 }
-                }   
+try {
+    await micropip.install("tkweb");
+    console.log("✅ tkweb installiert");
+} catch (err) {
+    console.warn("⚠️ PyPI fehlgeschlagen, versuche noDeps...", err);
+    try {
+        await micropip.install("tkweb", { noDeps: true });
+        console.log("✅ tkweb installiert (noDeps)");
+    } catch (err2) {
+        console.warn("⚠️ noDeps fehlgeschlagen, versuche lokales WHL...", err2);
+        try {
+            await micropip.install("./whl/tkweb/tkweb-0.0.3-py3-none-any.whl");
+            console.log("✅ tkweb installiert (lokal)");
+        } catch (err3) {
+            console.error("❌ Alle tkweb-Installationen fehlgeschlagen:", err3);
+        }
+    }
+} 
+  
                 // Installiere selbst gehostete Packages
                 // WICHTIG: Ersetze USERNAME mit deinem GitHub Username!
                 const baseURL = window.location.origin + window.location.pathname.replace('index.html', '');

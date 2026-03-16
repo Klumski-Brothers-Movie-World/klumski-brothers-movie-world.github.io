@@ -574,6 +574,22 @@ h1, h2, h3 {
     font-size: 5rem;
     margin-bottom: 1.5rem;
     animation: float 3s ease-in-out infinite;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-image img {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-image img {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .movie-rating {
