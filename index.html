@@ -16,11 +16,11 @@
         <div class="nav-container">
             <div class="logo">🎬 Klumski Brothers 🎭</div>
             <ul class="nav-menu">
-                <li><a href="#home">🏠 Home</a></li>
-                <li><a href="#about">🤡 Über uns</a></li>
-                <li><a href="#movies">🎥 "Filme"</a></li>
-                <li><a href="#awards">🏆 Auszeichnungen</a></li>
-                <li><a href="#contact">📧 Kontakt</a></li>
+                <li><a href="/index.html#home">🏠 Home</a></li>
+                <li><a href="/index.html#about">🤡 Über uns</a></li>
+                <li><a href="/index.html#movies">🎥 "Filme"</a></li>
+                <li><a href="/index.html#awards">🏆 Auszeichnungen</a></li>
+                <li><a href="/index.html#contact">📧 Kontakt</a></li>
                 <li><a href="https://github.com/Klumski-Brothers-Movie-World" target="_blank">💻 GitHub</a></li>
                 <li><a href="https://bit.ly/pls_spenden" target="_blank">💰 Spenden</a></li>
                 <li><img src="https://genqrcode.com/embedded?style=0&inner_eye_style=2&outer_eye_style=2&logo=f3d3e434828f5008572c44e999223d5a&color=%2300000000&background_color=%23FFFFFFFF&inner_eye_color=%23000000&outer_eye_color=%23000000&imageformat=svg&language=en&frame_style=10&frame_text=SCAN%20ME&frame_text_icon_color=%23000000&frame_text_icon=null&frame_color=%23000000&frame_background_color=%23FFFFFF&frame_text_color=%23FFFFFF&invert_colors=true&gradient_style=1&gradient_color_start=%230014ad&gradient_color_end=%2300aaff&gradient_start_offset=5&gradient_end_offset=95&stl_type=1&logo_remove_background=true&stl_size=100&stl_qr_height=1.5&stl_base_height=2&stl_include_stands=false&stl_qr_magnet_type=3&stl_qr_magnet_count=0&type=0&text=klumski-brothers-movie-world.github.io&width=200&height=200&bordersize=2" alt="qr code" /></li>
@@ -358,6 +358,15 @@
         </div>
     </section>
 
+        <section id="1-Time" class="we were live">
+        <div class="container">
+            <h2 class="section-title">📡 Wir waren LIVE! 🎥</h2>
+            <p class="section-subtitle">Hier kannst du die epische Premiere unseres CEO's sehen, wie er eine Wand Gelb streicht (weil er dachte, das wäre eine gute Idee für ein Video) 🎬</p>
+            <div class="video-container">
+                <iframe width="800" height="600" src="https://www.ardmediathek.de/video/lokalzeit-aus-bonn/wdr-lokalzeit-aus-bonn-oder-31-03-2026/wdr-bonn/Y3JpZDovL3dkci5kZS9CZWl0cmFnLXNvcGhvcmEtNmM4MWRkZmMtMTQyNy00NDMxLTlmMGEtM2E4NzlhNjE4OGJh?startTime=188"
+                    frameborder="0" allowfullscreen></iframe>
+            </div>
+
     <section id="contact" class="section contact-section">
         <div class="container">
             <h2 class="section-title">📧 Kontaktiere uns (wenn du dich traust) 🎪</h2>
@@ -378,16 +387,23 @@
                     </ul>
                 </div>
 
-                <form class="contact-form" id="contactForm">
-                    <input type="hidden" name="access_key" value="7563784b-9300-45d8-965e-791b79bf592f">
-                    <input type="hidden" name="subject" value="🎬 Neue Nachricht von Klumski Brothers Website! 🎭">
-                    <input type="hidden" name="from_name" value="Klumski Brothers Kontaktformular">
-                    <input type="text" name="name" placeholder="Dein Name (oder dein Alias)" required>
-                    <input type="email" name="email" placeholder="Deine E-Mail (versprochen, kein Spam!)" required>
-                    <textarea name="message" placeholder="Deine Nachricht (sei kreativ, wir sind es auch... irgendwie)" rows="5" required></textarea>
-                    <button type="submit" class="submit-button">🚀 Nachricht ins Universum schießen!</button>
-                    <p id="formResult" class="form-result"></p>
-                </form>
+
+            <form class="contact-form" id="contactForm">
+                <script src="https://web3forms.com/client/script.js" async defer></script>
+                
+                <input type="hidden" name="access_key" value="7563784b-9300-45d8-965e-791b79bf592f">
+                <input type="hidden" name="subject" value="🎬 Neue Nachricht von Klumski Brothers Website! 🎭">
+                <input type="hidden" name="from_name" value="Klumski Brothers Kontaktformular">
+                <input type="text" name="name" placeholder="Dein Name (oder dein Alias)" required>
+                <input type="email" name="email" placeholder="Deine E-Mail (versprochen, kein Spam!)" required>
+                <textarea name="message" placeholder="Deine Nachricht" rows="5" required></textarea>
+                
+                <!-- NUR EINMAL, IN der Form, KEIN explicit render -->
+                <div class="h-captcha" data-captcha="true" data-theme="dark" data-lang="de"></div>
+                
+                <button type="submit" class="submit-button">🚀 Nachricht ins Universum schießen!</button>
+                <p id="formResult" class="form-result"></p>
+            </form>
             </div>
         </div>
     </section>
@@ -407,7 +423,8 @@
                         <li><a href="#movies">Filme</a></li>
                         <li><a href="#contact">Kontakt</a></li>
                         <li><a href="https://bit.ly/pls_spenden" target="_blank">Spenden</a></li>
-                        <li><a href="https://klumski-brothers-movie-world.github.io/privacy.html" target="_blank">Datenschutz</a></li>
+                        <li><a href="/privacy.html" target="_blank">Datenschutz</a></li>
+                        <li><a href="/funny-stuff.html" target="_blank">Funny Stuff</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -423,7 +440,7 @@
             
             <div class="footer-divider"></div>
             
-            <p class="footer-copyright">&copy; 2025 Klumski Brothers Movie World. Alle Rechte vorbehalten (aber ehrlich gesagt, wer will die schon?). 🎭</p>
+            <p class="footer-copyright">&copy; 2026 Klumski Brothers Movie World. Alle Rechte vorbehalten (aber ehrlich gesagt, wer will die schon?). 🎭</p>
             <p class="footer-joke">Made with ❤️, Kaffee ☕, Energy Drinks 🔋, Schlafmangel 😴, fragwürdigen Lebensentscheidungen 🤔 und einer Prise Wahnsinn 🤪</p>
             <p class="disclaimer">⚠️ WICHTIG: Keine echte Filmfirma! Keine echten Filme! Nur echte Brüder mit echtem Humor und echtem Mangel an Filmwissen! 🎭</p>
             <p class="disclaimer-small">Alle "Filme" sind fiktiv. Ähnlichkeiten mit echten Filmen sind rein zufällig und werden von uns gefeiert! 🎉</p>
@@ -435,6 +452,49 @@
     </footer>
 
     <script>
+        
+    const form = document.getElementById('contactForm');
+    const result = document.getElementById('formResult');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // hCaptcha prüfen
+        const hCaptcha = form.querySelector('textarea[name=h-captcha-response]')?.value;
+        if (!hCaptcha) {
+            alert("Bitte das Captcha ausfüllen! 🤖");
+            return;
+        }
+
+        result.textContent = '🚀 Nachricht wird ins Universum geschossen...';
+        result.style.color = '#ffd700';
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                result.textContent = '🎉 ERFOLG! Wir melden uns (wahrscheinlich mit einem Meme 😄)';
+                result.style.color = '#4CAF50';
+                form.reset();
+                createConfetti();
+            } else {
+                result.textContent = '❌ Oops! Houston, wir haben ein Problem!';
+                result.style.color = '#ff6b6b';
+            }
+        } catch (error) {
+            result.textContent = '❌ Fehler: ' + error.message;
+            result.style.color = '#ff6b6b';
+        }
+    });
+
+
+
         // Wrap Emojis in spans für besseres Styling
         function wrapEmojis() {
             const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g;
@@ -460,9 +520,6 @@
         // Emojis beim Laden wrappen
         document.addEventListener('DOMContentLoaded', wrapEmojis);
 
-        // Contact Form Handler
-        const form = document.getElementById('contactForm');
-        const result = document.getElementById('formResult');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();

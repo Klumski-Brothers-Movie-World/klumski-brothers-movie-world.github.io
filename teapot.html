@@ -1,0 +1,52 @@
+<title>418 I'm a teapot</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Pyodide laden -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    
+    <script type="text/javascript">
+        async function main() {
+            try {
+                // Status update
+                document.getElementById('status').textContent = 'Pyodide wird geladen...';
+                
+                // Pyodide laden
+                const pyodide = await loadPyodide({
+                    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/"
+                });
+                console.log("✅ Pyodide geladen");
+                
+                // Status update
+                document.getElementById('status').textContent = 'Dependencies werden installiert...';
+                
+                // Lade micropip
+                await pyodide.loadPackage("micropip");
+                const micropip = pyodide.pyimport("micropip");
+
+                // Installiere die benötigten Python-Pakete
+                await micropip.install ["flask", "flask-cors"];
+                console.log("✅ Dependencies installiert");
+                            const response = await fetch('teapot.py');
+                if (!response.ok) {
+                    throw new Error(`Konnte teapot.py nicht laden: ${response.status} ${response.statusText}`);
+                }
+                const pythonCode = await response.text();
+                console.log("✅ teapot.py geladen");
+                
+                
+                // Führe Python-Code aus
+                await pyodide.runPythonAsync(pythonCode);
+                console.log("✅ teapot.py ausgeführt");
+
+
+            }
+            catch (error) {
+                console.error("❌ Fehler:", error);
+                document.getElementById('status').textContent = 'Fehler: ' + error.message;
+        }
+    }
+        // Starte die main-Funktion
+        main();
