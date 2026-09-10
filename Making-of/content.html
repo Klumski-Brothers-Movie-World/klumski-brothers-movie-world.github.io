@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="design.css">
+  <title>Making Of</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Making Of</h1>
+    <p>Zugriff freigeschaltet. Die Unterlagen findest du hier:</p>
+    <a class="button" href="https://drive.google.com/drive/folders/1SdR2EDreGAi5cxXNA2RGJLXPFa8pGY90?usp=sharing" target="_blank" rel="noopener">Google Drive öffnen</a>
+    <p class="hint">Du wirst gleich weitergeleitet...</p>
+  </div>
+  <script>
+    function getCookie(name) {
+      var parts = document.cookie.split(';');
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i].trim();
+        if (p.indexOf(name + '=') === 0) return p.substring(name.length + 1);
+      }
+      return null;
+    }
+    if (getCookie('makingof_access') !== '1') {
+      window.location.href = 'index.html';
+    } else {
+      setTimeout(function() {
+        window.location.href = 'https://drive.google.com/drive/folders/1SdR2EDreGAi5cxXNA2RGJLXPFa8pGY90?usp=sharing';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

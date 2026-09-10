@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="background-overlay"></div>
-    
+
     <!-- Konfetti Animation -->
     <div class="confetti-container" id="confetti"></div>
-    
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">🎬 Klumski Brothers 🎭</div>
@@ -59,7 +59,7 @@
             <h2 class="section-title">🎪 Über uns (oder: Die brutale Wahrheit™) 🤡</h2>
             <div class="about-content">
                 <p class="about-intro">Gegründet von zwei Brüdern, die nach dem 47. Mal Fast & Furious dachten: "Pfft, WIR können das VIEL besser!" (Spoiler: Konnten wir nicht. Aber wir haben's trotzdem gemacht!) 🚗💨</p>
-                
+
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-year">2015</div>
@@ -137,7 +137,7 @@
         <div class="container">
             <h2 class="section-title">🏆 Unsere "Meisterwerke" - Das Portfolio des Wahnsinns 🎪</h2>
             <p class="section-subtitle">⚠️ ACHTUNG: Diese Filme wurden von echten Laien gemacht! ⚠️</p>
-            
+
             <div class="movies-grid">
                 <div class="movie-card blockbuster">
                     <div class="movie-ribbon">BLOCKBUSTER!</div>
@@ -316,7 +316,7 @@
         <div class="container">
             <h2 class="section-title">🏆 Unsere "Auszeichnungen" 🎖️</h2>
             <p class="section-subtitle">Von uns selbst verliehen, aber trotzdem stolz! 🎉</p>
-            
+
             <div class="awards-grid">
                 <div class="award-card">
                     <div class="award-icon">🏆</div>
@@ -374,7 +374,7 @@
                 <p>Hast du Fragen? Willst du uns deine Filmideen andrehen? Oder einfach nur sagen, dass du's besser kannst? (Du kannst es wahrscheinlich) Her damit! 📧</p>
                 <p class="warning-text">⚠️ ACHTUNG: Wir antworten mit 67% Wahrscheinlichkeit mit Memes ⚠️</p>
                 <p class="warning-text">💀 Und mit 33% Wahrscheinlichkeit mit noch mehr Memes 💀</p>
-                
+
                 <div class="contact-reasons">
                     <h4>Gründe uns zu kontaktieren:</h4>
                     <ul>
@@ -390,17 +390,17 @@
 
             <form class="contact-form" id="contactForm">
                 <script src="https://web3forms.com/client/script.js" async defer></script>
-                
+
                 <input type="hidden" name="access_key" value="7563784b-9300-45d8-965e-791b79bf592f">
                 <input type="hidden" name="subject" value="🎬 Neue Nachricht von Klumski Brothers Website! 🎭">
                 <input type="hidden" name="from_name" value="Klumski Brothers Kontaktformular">
                 <input type="text" name="name" placeholder="Dein Name (oder dein Alias)" required>
                 <input type="email" name="email" placeholder="Deine E-Mail (versprochen, kein Spam!)" required>
                 <textarea name="message" placeholder="Deine Nachricht" rows="5" required></textarea>
-                
+
                 <!-- NUR EINMAL, IN der Form, KEIN explicit render -->
                 <div class="h-captcha" data-captcha="true" data-theme="dark" data-lang="de"></div>
-                
+
                 <button type="submit" class="submit-button">🚀 Nachricht ins Universum schießen!</button>
                 <p id="formResult" class="form-result"></p>
             </form>
@@ -437,14 +437,14 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-divider"></div>
-            
+
             <p class="footer-copyright">&copy; 2026 Klumski Brothers Movie World. Alle Rechte vorbehalten (aber ehrlich gesagt, wer will die schon?). 🎭</p>
             <p class="footer-joke">Made with ❤️, Kaffee ☕, Energy Drinks 🔋, Schlafmangel 😴, fragwürdigen Lebensentscheidungen 🤔 und einer Prise Wahnsinn 🤪</p>
             <p class="disclaimer">⚠️ WICHTIG: Keine echte Filmfirma! Keine echten Filme! Nur echte Brüder mit echtem Humor und echtem Mangel an Filmwissen! 🎭</p>
             <p class="disclaimer-small">Alle "Filme" sind fiktiv. Ähnlichkeiten mit echten Filmen sind rein zufällig und werden von uns gefeiert! 🎉</p>
-            
+
             <div class="easter-egg">
                 <p>🎪 HELAU! ALAAF! KAMELLE! 🎪</p>
             </div>
@@ -452,7 +452,7 @@
     </footer>
 
     <script>
-        
+
     const form = document.getElementById('contactForm');
     const result = document.getElementById('formResult');
 
@@ -498,7 +498,7 @@
         // Wrap Emojis in spans für besseres Styling
         function wrapEmojis() {
             const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g;
-            
+
             function processNode(node) {
                 if (node.nodeType === Node.TEXT_NODE) {
                     const text = node.textContent;
@@ -513,23 +513,23 @@
                     }
                 }
             }
-            
+
             processNode(document.body);
         }
-        
+
         // Emojis beim Laden wrappen
         document.addEventListener('DOMContentLoaded', wrapEmojis);
 
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             console.log('📧 Form submission started...');
             result.textContent = '🚀 Nachricht wird ins Universum geschossen...';
             result.style.color = '#ffd700';
 
             const formData = new FormData(form);
-            
+
             // Debug: Log form data
             console.log('📋 Form Data:');
             for (let [key, value] of formData.entries()) {
@@ -552,7 +552,7 @@
                     result.textContent = '🎉 ERFOLG! Nachricht angekommen! Wir melden uns (wahrscheinlich mit einem Meme 😄) Oder auch nicht. Vielleicht. Möglicherweise. Eventuell. 🤷‍♂️';
                     result.style.color = '#4CAF50';
                     form.reset();
-                    
+
                     // Konfetti-Effekt bei Erfolg!
                     createConfetti();
                 } else {
@@ -566,7 +566,7 @@
                 result.style.color = '#ff6b6b';
             }
         });
-        
+
         console.log('✅ Form handler initialized');
         console.log('🎬 Klumski Brothers Movie World loaded successfully!');
         console.log('🎭 Prepare for MAXIMUM KARNEVAL! 🎪');
@@ -575,7 +575,7 @@
         function createConfetti() {
             const colors = ['#e50914', '#ffd700', '#4CAF50', '#2196F3', '#FF69B4', '#FFA500'];
             const confettiContainer = document.getElementById('confetti');
-            
+
             for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti-piece';
@@ -583,23 +583,24 @@
                 confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.animationDelay = Math.random() * 3 + 's';
                 confettiContainer.appendChild(confetti);
-                
+
             }
         }
 
         // Easter Egg: Konami Code
         let konamiCode = [];
         const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'Enter'];
-        
+
+
         document.addEventListener('keydown', (e) => {
             konamiCode.push(e.key);
             konamiCode = konamiCode.slice(-10);
-            
+
             // Debug: zeigt jeden Tastendruck in der Konsole
             console.log('🕹️ Taste gedrückt:', e.key);
             console.log('📋 Bisherige Sequenz:', konamiCode.join(', '));
             console.log('🎯 Noch fehlend:', konamiSequence.slice(konamiCode.length).join(', '));
-            
+
             if (konamiCode.join(',') === konamiSequence.join(',')) {
                 console.log('🎊 KONAMI CODE AKTIVIERT!');
                 alert('🎊 GEHEIMER KARNEVAL-MODUS AKTIVIERT! 🎊\n\nDu hast das Easter Egg gefunden!\n\n🎭 Helau! 🎪');
@@ -608,6 +609,22 @@
                 createConfetti();
                 konamiCode = []; // Reset nach Erfolg
             }
+            let Secret = [];
+            const Secret = ['m', 'r', '.', ' ', 's', 't', 'i', 'e', 'w', 'e'];
+
+            document.addEventListener('keydown', (f) => {
+                Secret.push(f.key)
+                Secret = Secret.slice(-10)
+
+                console.log('🕹️ Taste gedrückt:', f.key);
+                console.log('📋 Bisherige Sequenz:', Secret.join(', '));
+                console.log('🎯 Noch fehlend:', Secret.slice(Secret.length).join(', '));
+
+                if (Secret.join(',') === Secret.join(',')) {
+                    console.log = "https://klumski-brothers-movie-world.github.io/a/b/c/d/e/n/g/l/i/s/h/i/s/l/o/v/e/index.html"
+                    alert('https://klumski-brothers-movie-world.github.io/a/b/c/d/e/n/g/l/i/s/h/i/s/l/o/v/e/index.html')
+                }
+            })
         });
     </script>
 </body>

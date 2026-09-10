@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="design.css">
+  <title>Making Of - Passwort</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Making Of</h1>
+    <p>Gib das Passwort ein um weiterzukommen.</p>
+    <form id="passwordForm">
+      <input type="password" id="passwordInput" placeholder="ENTER PASSWORD" required>
+      <button type="submit">OK</button>
+    </form>
+    <p id="error" class="error">Falsches Passwort!</p>
+  </div>
+  <script>
+    document.getElementById('passwordForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var pw = document.getElementById('passwordInput').value;
+      if (pw === 'KBMWMakingof1@FHG!') {
+        document.cookie = 'makingof_access=1; path=/Making-of/; max-age=86400';
+        window.location.href = 'content.html';
+      } else {
+        document.getElementById('error').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
